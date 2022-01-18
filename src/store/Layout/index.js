@@ -1,24 +1,42 @@
-const INITIAL_STATE = {};
 
+const INITIAL_STATE = {
+	showMessage:false,
+};
 
-export default function reducer (state = INITIAL_STATE, action){
+export default (state = INITIAL_STATE, action) =>{
 	switch(action.type){
-		case 'SHOW_MESSAGE':
+		case Types.SHOW_MESSAGE:
 			return {...state, showMessage: true };
-		case 'HIDE_MESSAGE':
+		case Types.HIDE_MESSAGE:
 			return {...state, showMessage: false };
 		default:
 			return state;
 	}
 
 }
-export const showMessage =()=>{
-	return {
-		type:'SHOW_MESSAGE'
-	};
+
+//actions types
+export const Types ={ 
+	SHOW_MESSAGE: 'SHOW_MESSAGE',
+	HIDE_MESSAGE: 'HIDE_MESSAGE'
 };
-export const  hideMessage =()=>{
+// action creators
+export const Creators = {
+  showMessage: ()=>({	type: Types.SHOW_MESSAGE }),
+	hideMessage: ()=>{
 	return {
-		type:'HIDE_MESSAGE'
-	};
+    type: Types.HIDE_MESSAGE
+		};
+	}
 };
+/*export const showMessage =()=>{
+	return {
+    type:'SHOW_MESSAGE'
+	}
+};
+export const hideMessage =()=>{
+	return {
+    type:'HIDE_MESSAGE'
+	}
+};
+*/
