@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCar } from '../../store/cars';
-import { Creators as CreatorsLayout } from '../../store/layout';
+import { hideMessage, showMessage } from '../../store/layout';
 
 export default function Add() {
 	const [ form, setForm ] =useState({	name:'',url:''});
@@ -12,7 +12,7 @@ export default function Add() {
 		setForm({...form, [e.target.name]: e.target.value});
 	}
 	function onSubmit(e){
-		const {hideMessage, showMessage} = CreatorsLayout;
+	//	const {hideMessage, showMessage} = CreatorsLayout;
 		e.preventDefault();
 	  dispatch(addCar(form));
 		setForm({name:'', url:''});

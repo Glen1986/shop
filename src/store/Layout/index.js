@@ -1,21 +1,26 @@
-
+import { createAction, createReducer } from '@reduxjs/toolkit'
 const INITIAL_STATE = {
 	showMessage:false,
 };
+export const showMessage = createAction('SHOW_MESSAGE');
+export const hideMessage =  createAction('HIDE_MESSAGE');
 
+export default createReducer(INITIAL_STATE, {
+	[showMessage.type]:(state, action)=>({...state, showMessage: true	}),
+	[hideMessage.type]:(state, action)=>({...state, showMessage: false})
+})
+/*
 export default (state = INITIAL_STATE, action) =>{
 	switch(action.type){
-		case Types.SHOW_MESSAGE:
+		case showMessage.type:
 			return {...state, showMessage: true };
-		case Types.HIDE_MESSAGE:
+		case hideMessage.type:
 			return {...state, showMessage: false };
 		default:
 			return state;
 	}
-
 }
-
-//actions types
+/actions types
 export const Types ={ 
 	SHOW_MESSAGE: 'SHOW_MESSAGE',
 	HIDE_MESSAGE: 'HIDE_MESSAGE'
@@ -23,20 +28,7 @@ export const Types ={
 // action creators
 export const Creators = {
   showMessage: ()=>({	type: Types.SHOW_MESSAGE }),
-	hideMessage: ()=>{
-	return {
-    type: Types.HIDE_MESSAGE
-		};
-	}
-};
-/*export const showMessage =()=>{
-	return {
-    type:'SHOW_MESSAGE'
-	}
-};
-export const hideMessage =()=>{
-	return {
-    type:'HIDE_MESSAGE'
-	}
+	hideMessage: ()=> ({    type: Types.HIDE_MESSAGE})
 };
 */
+
